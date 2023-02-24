@@ -1,0 +1,17 @@
+name: Scheduled commit
+
+on:
+  schedule:
+    - cron: '*/4 * * * *' # Change this to the desired schedule in Cron format
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create empty file
+        run: touch empty-file.txt
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          message: "Scheduled commit"
+          add: empty-file.txt
